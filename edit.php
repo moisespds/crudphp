@@ -8,7 +8,7 @@ if (!isset($_GET['id'])) {
 $id = $_GET['id'];
 
 // Buscar pedido
-$stmt = $conn->prepare("SELECT * FROM pedidos WHERE id=?");
+$stmt = $conn->prepare("SELECT * FROM pedidos_po WHERE id=?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
 $pedido = $stmt->get_result()->fetch_assoc();
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome  = $_POST['nome'];
     $preco = $_POST['preco'];
 
-    $stmt2 = $conn->prepare("UPDATE pedidos SET nome=?, preco=? WHERE id=?");
+    $stmt2 = $conn->prepare("UPDATE pedidos_po SET nome=?, preco=? WHERE id=?");
     $stmt2->bind_param("sdi", $nome, $preco, $id);
 
     if ($stmt2->execute()) {

@@ -1,7 +1,7 @@
 <?php
 include 'db.php';
 
-$result = $conn->query("SELECT * FROM pedidos ORDER BY id DESC");
+$result = $conn->query("SELECT * FROM pedidos_po ORDER BY id DESC");
 ?>
 <!DOCTYPE html>
 <html>

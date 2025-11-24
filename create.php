@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome  = $_POST['nome'];
     $preco = $_POST['preco'];
 
-    $stmt = $conn->prepare("INSERT INTO pedidos (nome, preco) VALUES (?, ?)");
+    $stmt = $conn->prepare("INSERT INTO pedidos_po (nome, preco) VALUES (?, ?)");
     $stmt->bind_param("sd", $nome, $preco);
 
     if ($stmt->execute()) {

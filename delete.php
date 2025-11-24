@@ -7,7 +7,7 @@ if (!isset($_GET['id'])) {
 
 $id = $_GET['id'];
 
-$stmt = $conn->prepare("DELETE FROM pedidos WHERE id=?");
+$stmt = $conn->prepare("DELETE FROM pedidos_po WHERE id=?");
 $stmt->bind_param("i", $id);
 
 if ($stmt->execute()) {
