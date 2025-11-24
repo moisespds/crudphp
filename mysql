@@ -1,9 +1,0 @@
-CREATE DATABASE pedidos_po;
-USE pedidos_po;
-
-CREATE TABLE pedidos_po (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(120) NOT NULL,
-    preco DECIMAL(10,2) NOT NULL,
-    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);

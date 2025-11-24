@@ -13,7 +13,7 @@ $stmt->bind_param("i", $id);
 if ($stmt->execute()) {
     header("Location: index.php");
     exit;
+} else {
+    echo "Erro ao excluir.";
 }
-
-echo "Erro ao excluir.";
 ?>

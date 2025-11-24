@@ -11,33 +11,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->execute()) {
         header("Location: index.php");
         exit;
+    } else {
+        echo "Erro ao inserir.";
     }
 }
-
-include 'header.php';
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Criar Pedido</title>
+</head>
+<body>
 
-<h2 class="text-success mb-3">Novo Pedido</h2>
+<h1>Novo Pedido</h1>
 
-<div class="card shadow">
-    <div class="card-body">
+<form method="POST">
+    Nome: <br>
+    <input type="text" name="nome" required><br><br>
 
-        <form method="POST">
-            <div class="mb-3">
-                <label class="form-label">Nome</label>
-                <input type="text" name="nome" class="form-control" required>
-            </div>
+    Preço: <br>
+    <input type="number" step="0.01" name="preco" required><br><br>
 
-            <div class="mb-3">
-                <label class="form-label">Preço</label>
-                <input type="number" step="0.01" name="preco" class="form-control" required>
-            </div>
+    <button type="submit">Salvar</button>
+</form>
 
-            <button class="btn btn-success">Salvar</button>
-            <a href="index.php" class="btn btn-secondary">Cancelar</a>
-        </form>
-
-    </div>
-</div>
-
-<?php include 'footer.php'; ?>
+</body>
+</html>

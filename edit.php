@@ -7,6 +7,7 @@ if (!isset($_GET['id'])) {
 
 $id = $_GET['id'];
 
+// Buscar pedido
 $stmt = $conn->prepare("SELECT * FROM pedidos WHERE id=?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
@@ -16,6 +17,7 @@ if (!$pedido) {
     die("Pedido não encontrado.");
 }
 
+// Atualizar
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome  = $_POST['nome'];
     $preco = $_POST['preco'];
@@ -26,35 +28,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt2->execute()) {
         header("Location: index.php");
         exit;
+    } else {
+        echo "Erro ao atualizar.";
     }
 }
-
-include 'header.php';
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Pedido</title>
+</head>
+<body>
 
-<h2 class="text-warning mb-3">Editar Pedido</h2>
+<h1>Editar Pedido #<?= $pedido['id']; ?></h1>
 
-<div class="card shadow">
-    <div class="card-body">
+<form method="POST">
+    Nome: <br>
+    <input type="text" name="nome" value="<?= $pedido['nome']; ?>" required><br><br>
 
-        <form method="POST">
-            <div class="mb-3">
-                <label class="form-label">Nome</label>
-                <input type="text" name="nome" class="form-control"
-                       value="<?= $pedido['nome']; ?>" required>
-            </div>
+    Preço: <br>
+    <input type="number" step="0.01" name="preco" value="<?= $pedido['preco']; ?>" required><br><br>
 
-            <div class="mb-3">
-                <label class="form-label">Preço</label>
-                <input type="number" step="0.01" name="preco" class="form-control"
-                       value="<?= $pedido['preco']; ?>" required>
-            </div>
+    <button type="submit">Salvar alterações</button>
+</form>
 
-            <button class="btn btn-warning">Salvar alterações</button>
-            <a href="index.php" class="btn btn-secondary">Cancelar</a>
-        </form>
-
-    </div>
-</div>
-
-<?php include 'footer.php'; ?>
+</body>
+</html>
