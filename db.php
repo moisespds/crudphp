@@ -1,8 +1,8 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "crud_php";
+$host = "pradooridesdatabase.ca7nqjxtepzb.us-east-1.rds.amazonaws.com";
+$user = "admin";
+$pass = "fatec2025";
+$db   = "pedidos_po";
 
 $conn = new mysqli($host, $user, $pass, $db);
 
